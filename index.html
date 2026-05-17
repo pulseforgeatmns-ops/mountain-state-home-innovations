@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mountain State Home Innovations | Decks, Siding & Renovations | Charleston, WV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --charcoal: #1a1a18;
+  --slate: #2c2c28;
+  --mid: #3d3d38;
+  --amber: #c8860a;
+  --amber-light: #e09d20;
+  --stone: #8a8578;
+  --cream: #f0ebe0;
+  --white: #faf8f3;
+  --serif: 'Crimson Pro', Georgia, serif;
+  --display: 'Bebas Neue', sans-serif;
+  --sans: 'DM Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: auto; }
+body { background: var(--charcoal); color: var(--white); font-family: var(--sans); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+/* MAGNETIC BUTTON */
+.mag-btn { position: relative; display: inline-block; cursor: pointer; transition: transform 0.15s cubic-bezier(.17,.67,.35,1.2); }
+.mag-btn a, .mag-btn button { display: block; pointer-events: all; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: linear-gradient(to bottom, rgba(26,26,24,0.97), transparent); backdrop-filter: blur(4px); transition: background 0.3s; }
+.nav-logo { font-family: var(--display); font-size: 22px; letter-spacing: 0.12em; color: var(--white); text-decoration: none; line-height: 1; }
+.nav-logo span { color: var(--amber); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { color: var(--stone); text-decoration: none; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { background: var(--amber) !important; color: var(--charcoal) !important; padding: 10px 22px !important; font-weight: 500 !important; letter-spacing: 0.06em !important; }
+
+/* BTN STYLES */
+.btn-primary { background: var(--amber); color: var(--charcoal); padding: 16px 36px; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; display: inline-block; }
+.btn-outline { border: 1px solid rgba(255,255,255,0.2); color: var(--white); padding: 16px 36px; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: border-color 0.2s, color 0.2s; }
+.btn-outline:hover { border-color: var(--amber); color: var(--amber); }
+.btn-amber-outline { border: 2px solid var(--charcoal); color: var(--charcoal); background: transparent; padding: 14px 32px; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+.btn-amber-outline:hover { background: rgba(26,26,24,0.1); }
+
+/* HERO */
+#hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 120px 64px 80px; position: relative; z-index: 2; }
+.hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--amber); }
+.hero-headline { font-family: var(--display); font-size: clamp(64px, 6vw, 96px); line-height: 0.92; letter-spacing: 0.02em; color: var(--white); margin-bottom: 8px; }
+.hero-headline em { font-style: normal; color: var(--amber); }
+.hero-sub { font-family: var(--serif); font-size: 22px; color: var(--stone); font-weight: 300; margin: 24px 0 40px; line-height: 1.5; max-width: 420px; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-stats { display: flex; gap: 40px; margin-top: 64px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+.stat-num { font-family: var(--display); font-size: 42px; color: var(--white); letter-spacing: 0.04em; line-height: 1; }
+.stat-num span { color: var(--amber); }
+.stat-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); margin-top: 4px; }
+.hero-right { position: relative; overflow: hidden; }
+.hero-image-bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(200,134,10,0.12) 0%, transparent 50%), repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px); background-color: var(--slate); }
+.hero-image-overlay { position: absolute; inset: 0; background: linear-gradient(to right, var(--charcoal) 0%, transparent 30%); z-index: 1; }
+.hero-badge { position: absolute; bottom: 80px; right: 48px; z-index: 2; width: 160px; height: 160px; border: 1px solid rgba(200,134,10,0.4); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: rgba(26,26,24,0.85); backdrop-filter: blur(8px); animation: spin-badge 20s linear infinite; }
+@keyframes spin-badge { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.hero-badge-inner { animation: spin-badge-reverse 20s linear infinite; }
+@keyframes spin-badge-reverse { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+.hero-badge-num { font-family: var(--display); font-size: 48px; color: var(--amber); line-height: 1; }
+.hero-badge-text { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); line-height: 1.4; padding: 0 16px; }
+.hero-wood-grain { position: absolute; inset: 0; background-image: repeating-linear-gradient(90deg, transparent 0px, transparent 8px, rgba(255,255,255,0.008) 8px, rgba(255,255,255,0.008) 9px), repeating-linear-gradient(0deg, transparent 0px, transparent 120px, rgba(200,134,10,0.04) 120px, rgba(200,134,10,0.04) 121px); }
+.hero-corner-label { position: absolute; top: 120px; right: 40px; z-index: 2; writing-mode: vertical-rl; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.15); }
+
+/* TICKER */
+.ticker { background: var(--amber); overflow: hidden; padding: 12px 0; white-space: nowrap; }
+.ticker-inner { display: inline-flex; animation: ticker 25s linear infinite; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-item { font-family: var(--display); font-size: 14px; letter-spacing: 0.15em; color: var(--charcoal); padding: 0 48px; display: inline-flex; align-items: center; gap: 48px; }
+.ticker-item::after { content: '✦'; opacity: 0.4; }
+
+/* INTRO */
+#intro { padding: 120px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1400px; margin: 0 auto; align-items: center; }
+.intro-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 20px; }
+.intro-heading { font-family: var(--serif); font-size: clamp(36px, 3vw, 52px); font-weight: 300; line-height: 1.2; margin-bottom: 28px; color: var(--white); }
+.intro-heading strong { font-weight: 600; font-style: italic; }
+.intro-body { font-size: 17px; color: var(--stone); line-height: 1.8; margin-bottom: 20px; font-family: var(--serif); font-weight: 300; }
+.intro-body strong { color: var(--cream); font-weight: 400; }
+.license-tag { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(200,134,10,0.3); padding: 8px 16px; font-size: 12px; color: var(--amber); letter-spacing: 0.08em; margin-top: 8px; }
+.intro-right { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.intro-card { background: var(--slate); padding: 36px 28px; position: relative; overflow: hidden; }
+.intro-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--amber); transition: height 0.4s ease; }
+.intro-card:hover::before { height: 100%; }
+.intro-card-num { font-family: var(--display); font-size: 56px; color: rgba(200,134,10,0.2); line-height: 1; margin-bottom: 8px; }
+.intro-card-title { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); margin-bottom: 8px; }
+.intro-card-text { font-size: 13px; color: var(--stone); line-height: 1.6; }
+
+/* SERVICES */
+#services { background: var(--slate); padding: 120px 48px; }
+.section-header { max-width: 1400px; margin: 0 auto 72px; display: flex; justify-content: space-between; align-items: flex-end; }
+.section-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
+.section-title { font-family: var(--display); font-size: clamp(48px, 5vw, 80px); line-height: 0.95; letter-spacing: 0.02em; }
+.section-desc { font-family: var(--serif); font-size: 18px; color: var(--stone); font-weight: 300; max-width: 320px; text-align: right; line-height: 1.6; }
+.services-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.service-card { background: var(--charcoal); padding: 48px 40px; position: relative; overflow: hidden; cursor: default; transition: background 0.3s; }
+.service-card:hover { background: var(--mid); }
+.service-card.featured { background: var(--amber); }
+.service-card.featured * { color: var(--charcoal) !important; }
+.service-icon { font-size: 36px; margin-bottom: 24px; display: block; }
+.service-num { position: absolute; top: 24px; right: 28px; font-family: var(--display); font-size: 80px; color: rgba(255,255,255,0.04); line-height: 1; pointer-events: none; }
+.service-card.featured .service-num { color: rgba(26,26,24,0.1); }
+.service-name { font-family: var(--display); font-size: 32px; letter-spacing: 0.04em; margin-bottom: 16px; line-height: 1; }
+.service-text { font-size: 14px; color: var(--stone); line-height: 1.7; margin-bottom: 24px; }
+.service-tag { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); display: flex; align-items: center; gap: 8px; }
+.service-tag::before { content: '→'; }
+.service-card.featured .service-tag { color: var(--charcoal); }
+.service-cta { margin-top: 60px; max-width: 1400px; margin-left: auto; margin-right: auto; padding-top: 60px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.06); }
+.service-cta p { font-family: var(--serif); font-size: 20px; color: var(--stone); font-weight: 300; }
+
+/* PROCESS */
+#process { padding: 120px 48px; max-width: 1400px; margin: 0 auto; }
+.process-header { margin-bottom: 80px; }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+.process-steps::before { content: ''; position: absolute; top: 28px; left: 14%; right: 14%; height: 1px; background: linear-gradient(to right, var(--amber), rgba(200,134,10,0.2)); }
+.process-step { padding: 0 32px 0 0; }
+.step-dot { width: 56px; height: 56px; border: 1px solid var(--amber); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: 22px; color: var(--amber); margin-bottom: 32px; background: var(--charcoal); position: relative; z-index: 1; }
+.step-title { font-family: var(--display); font-size: 24px; letter-spacing: 0.04em; margin-bottom: 12px; }
+.step-text { font-size: 14px; color: var(--stone); line-height: 1.7; }
+
+/* TRUST */
+#trust { background: var(--amber); padding: 80px 48px; }
+.trust-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.trust-heading { font-family: var(--display); font-size: clamp(40px, 4vw, 64px); color: var(--charcoal); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 24px; }
+.trust-body { font-family: var(--serif); font-size: 20px; color: rgba(26,26,24,0.75); font-weight: 300; line-height: 1.6; margin-bottom: 32px; }
+.trust-list { display: flex; flex-direction: column; gap: 20px; }
+.trust-item { display: flex; gap: 20px; align-items: flex-start; }
+.trust-icon { width: 44px; height: 44px; background: var(--charcoal); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+.trust-item-text strong { display: block; font-size: 15px; font-weight: 500; color: var(--charcoal); margin-bottom: 4px; }
+.trust-item-text span { font-size: 14px; color: rgba(26,26,24,0.65); }
+
+/* AREA */
+#area { padding: 120px 48px; background: var(--slate); }
+.area-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.county-block { margin-bottom: 40px; }
+.county-name { font-family: var(--display); font-size: 28px; letter-spacing: 0.06em; color: var(--amber); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+.county-name::after { content: ''; flex: 1; height: 1px; background: rgba(200,134,10,0.2); }
+.county-cities { display: flex; flex-wrap: wrap; gap: 8px; }
+.city-tag { font-size: 12px; letter-spacing: 0.08em; color: var(--stone); border: 1px solid rgba(255,255,255,0.08); padding: 6px 14px; transition: all 0.2s; }
+.city-tag:hover { border-color: var(--amber); color: var(--amber); }
+.area-right { padding-top: 80px; }
+.area-note { font-family: var(--serif); font-size: 20px; color: var(--stone); font-weight: 300; line-height: 1.7; margin-bottom: 32px; }
+.area-note strong { color: var(--cream); font-weight: 400; }
+.emergency-box { background: var(--charcoal); border-left: 3px solid var(--amber); padding: 28px 32px; margin-bottom: 32px; }
+.emergency-box h4 { font-family: var(--display); font-size: 22px; letter-spacing: 0.06em; color: var(--amber); margin-bottom: 8px; }
+.emergency-box p { font-size: 14px; color: var(--stone); line-height: 1.6; }
+
+/* TESTIMONIALS */
+#testimonials { padding: 120px 48px; }
+.testimonials-inner { max-width: 1400px; margin: 0 auto; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 72px; }
+.testimonial-card { background: var(--slate); padding: 48px 40px; }
+.quote-mark { font-family: var(--serif); font-size: 80px; color: var(--amber); line-height: 0.6; margin-bottom: 24px; display: block; opacity: 0.4; }
+.testimonial-text { font-family: var(--serif); font-size: 18px; font-weight: 300; color: var(--cream); line-height: 1.7; margin-bottom: 32px; font-style: italic; }
+.testimonial-author { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
+.testimonial-author strong { display: block; color: var(--white); font-weight: 500; margin-bottom: 4px; }
+.stars { color: var(--amber); font-size: 14px; margin-bottom: 20px; letter-spacing: 2px; }
+.testimonials-cta { margin-top: 60px; text-align: center; }
+
+/* FOOTER */
+footer { background: #111110; padding: 60px 48px; border-top: 1px solid rgba(255,255,255,0.04); }
+.footer-inner { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+.footer-logo { font-family: var(--display); font-size: 24px; letter-spacing: 0.12em; color: var(--white); }
+.footer-logo span { color: var(--amber); }
+.footer-links { display: flex; gap: 32px; flex-wrap: wrap; align-items: center; }
+.footer-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--amber); }
+.footer-copy { font-size: 12px; color: rgba(138,133,120,0.5); width: 100%; text-align: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.04); margin-top: 12px; }
+
+/* MODAL OVERLAY */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(10,10,8,0.85);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 24px;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--charcoal);
+  border: 1px solid rgba(200,134,10,0.25);
+  width: 100%; max-width: 720px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(24px);
+  transition: transform 0.35s cubic-bezier(.17,.67,.35,1.1);
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+.modal-header {
+  padding: 40px 48px 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.modal-title { font-family: var(--display); font-size: 52px; letter-spacing: 0.04em; line-height: 0.95; }
+.modal-title span { color: var(--amber); display: block; font-size: 14px; letter-spacing: 0.2em; font-family: var(--sans); font-weight: 300; margin-bottom: 8px; }
+.modal-close {
+  background: none; border: 1px solid rgba(255,255,255,0.12);
+  color: var(--stone); width: 40px; height: 40px;
+  cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all 0.2s; margin-top: 4px;
+}
+.modal-close:hover { border-color: var(--amber); color: var(--amber); }
+.modal-body { padding: 40px 48px; }
+.modal-contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+.modal-contact-item { border-left: 2px solid rgba(200,134,10,0.3); padding-left: 16px; }
+.modal-contact-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 4px; }
+.modal-contact-value { font-family: var(--display); font-size: 22px; letter-spacing: 0.04em; }
+.modal-contact-sub { font-size: 12px; color: var(--stone); margin-top: 2px; }
+.mform { display: flex; flex-direction: column; gap: 2px; }
+.mform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.mform-group { display: flex; flex-direction: column; }
+.mform-group label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); padding: 14px 18px 6px; background: var(--slate); }
+.mform-group input, .mform-group select, .mform-group textarea { background: var(--slate); border: none; padding: 0 18px 14px; color: var(--white); font-family: var(--sans); font-size: 15px; outline: none; transition: background 0.2s; -webkit-appearance: none; }
+.mform-group select { padding-bottom: 14px; cursor: pointer; }
+.mform-group select option { background: var(--charcoal); }
+.mform-group textarea { resize: none; min-height: 90px; padding-bottom: 14px; }
+.mform-group input:focus, .mform-group select:focus, .mform-group textarea:focus { background: var(--mid); }
+.mform-submit { background: var(--amber); color: var(--charcoal); border: none; padding: 18px; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: 2px; width: 100%; }
+.mform-submit:hover { background: var(--amber-light); }
+
+/* FADE UP */
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  nav { padding: 20px 24px; }
+  .nav-links { display: none; }
+  #hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 140px 32px 80px; }
+  #intro, .trust-inner, .area-inner { grid-template-columns: 1fr; gap: 48px; }
+  .intro-right { grid-template-columns: 1fr 1fr; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .section-desc { text-align: left; max-width: 100%; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 48px; }
+  .process-steps::before { display: none; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  #intro, #services, #process, #trust, #area, #testimonials { padding: 80px 24px; }
+  footer { padding: 40px 24px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .modal-header { padding: 32px 28px 24px; }
+  .modal-body { padding: 28px; }
+  .modal-contact-row { grid-template-columns: 1fr; gap: 16px; }
+  .modal-title { font-size: 40px; }
+  .service-cta { flex-direction: column; align-items: flex-start; gap: 24px; }
+}
+@media (max-width: 640px) {
+  .hero-stats { flex-direction: column; gap: 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .mform-row { grid-template-columns: 1fr; }
+  .intro-right { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-outline { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="estimateModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">
+        <span>Free Estimate</span>
+        FREE.<br>NO PRESSURE.
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-contact-row">
+        <div class="modal-contact-item">
+          <div class="modal-contact-label">Call Brad directly</div>
+          <div class="modal-contact-value">304-483-3655</div>
+          <div class="modal-contact-sub">Picks up on job sites</div>
+        </div>
+        <div class="modal-contact-item">
+          <div class="modal-contact-label">Call Dustin directly</div>
+          <div class="modal-contact-value">304-610-5534</div>
+          <div class="modal-contact-sub">Same-day response</div>
+        </div>
+        <div class="modal-contact-item">
+          <div class="modal-contact-label">Email</div>
+          <div class="modal-contact-value" style="font-size:15px;letter-spacing:0.01em;">mshomeinnovations@gmail.com</div>
+          <div class="modal-contact-sub">Respond same day</div>
+        </div>
+        <div class="modal-contact-item">
+          <div class="modal-contact-label">Service area</div>
+          <div class="modal-contact-value" style="font-size:17px;">Charleston, WV</div>
+          <div class="modal-contact-sub">Kanawha · Putnam · Cabell</div>
+        </div>
+      </div>
+      <div class="mform" id="estimateForm">
+        <div class="mform-row">
+          <div class="mform-group"><label>Your Name</label><input type="text" placeholder="John Smith"></div>
+          <div class="mform-group"><label>Phone Number</label><input type="tel" placeholder="304-000-0000"></div>
+        </div>
+        <div class="mform-group"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
+        <div class="mform-group"><label>Service Needed</label>
+          <select>
+            <option value="" disabled selected>Select a service...</option>
+            <option>Deck Build or Repair</option>
+            <option>Siding Installation or Replacement</option>
+            <option>Window Installation or Capping</option>
+            <option>Interior Renovation</option>
+            <option>Emergency Repair</option>
+            <option>Commercial / Property Management</option>
+            <option>Not Sure — Need Assessment</option>
+          </select>
+        </div>
+        <div class="mform-group"><label>Property Address or City</label><input type="text" placeholder="Charleston, WV or full address"></div>
+        <div class="mform-group"><label>Tell Us About the Project</label><textarea placeholder="Size, scope, timeline, any concerns..."></textarea></div>
+        <button type="button" class="mform-submit" id="formSubmit">Request Free Estimate →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">MOUNTAIN STATE <span>HOME INNOVATIONS</span></a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#area">Service Area</a>
+    <a href="#testimonials">Reviews</a>
+    <span class="mag-btn"><a href="#" class="nav-cta" data-modal>Free Estimate</a></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Licensed & Insured · WV065578</div>
+    <h1 class="hero-headline">BUILT<br>BY THE<br><em>GUYS</em><br>WHO SHOW<br>UP.</h1>
+    <p class="hero-sub">Decks, siding, windows, and renovations across Charleston and the Kanawha Valley — done right, on time, by Brad and Dustin themselves.</p>
+    <div class="hero-actions">
+      <span class="mag-btn"><a href="#" class="btn-primary" data-modal>Get a Free Estimate</a></span>
+      <span class="mag-btn"><a href="#services" class="btn-outline">Our Services</a></span>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">15<span>+</span></div><div class="stat-label">Years Combined Experience</div></div>
+      <div><div class="stat-num">3</div><div class="stat-label">Counties Served</div></div>
+      <div><div class="stat-num">24<span>/7</span></div><div class="stat-label">Emergency Response</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-bg"></div>
+    <div class="hero-wood-grain"></div>
+    <div class="hero-image-overlay"></div>
+    <div class="hero-corner-label">Charleston · Huntington · Hurricane</div>
+    <div class="hero-badge"><div class="hero-badge-inner"><div class="hero-badge-num">★5</div><div class="hero-badge-text">Google Rated</div></div></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="ticker-item">Decks & Siding</div><div class="ticker-item">Window Installation</div><div class="ticker-item">Interior Renovations</div><div class="ticker-item">Emergency Repairs</div><div class="ticker-item">Free Estimates</div><div class="ticker-item">Licensed WV065578</div><div class="ticker-item">15+ Years Experience</div><div class="ticker-item">Charleston WV</div><div class="ticker-item">Decks & Siding</div><div class="ticker-item">Window Installation</div><div class="ticker-item">Interior Renovations</div><div class="ticker-item">Emergency Repairs</div><div class="ticker-item">Free Estimates</div><div class="ticker-item">Licensed WV065578</div><div class="ticker-item">15+ Years Experience</div><div class="ticker-item">Charleston WV</div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="intro-left fade-up">
+    <div class="intro-label">Who We Are</div>
+    <h2 class="intro-heading">Not a crew you'll <strong>never meet.</strong> Just Brad and Dustin.</h2>
+    <p class="intro-body">Most contractors send a crew. We show up ourselves — on every estimate, every job, every follow-up call. That's not a selling point, it's just <strong>how we work.</strong></p>
+    <p class="intro-body">We cut our teeth subcontracting for Tri-State Exterior Solutions, St. Albans Windows, and Secure Construction. We know how large-scale work gets done. Now we bring that standard to residential and commercial clients across <strong>Kanawha, Putnam, and Cabell Counties</strong> — without the corporate markup.</p>
+    <div class="license-tag">✓ Licensed & Insured · WV065578 · West Virginia</div>
+  </div>
+  <div class="intro-right fade-up">
+    <div class="intro-card"><div class="intro-card-num">01</div><div class="intro-card-title">Owner-Operated</div><div class="intro-card-text">Brad and Dustin do the work. No subcontractors. No disappearing acts.</div></div>
+    <div class="intro-card"><div class="intro-card-num">02</div><div class="intro-card-title">Communication First</div><div class="intro-card-text">We answer our phones. We return calls. We send updates. It's that simple.</div></div>
+    <div class="intro-card"><div class="intro-card-num">03</div><div class="intro-card-title">Free Estimates</div><div class="intro-card-text">No charge, no pressure. We'll walk the property and give you a straight number.</div></div>
+    <div class="intro-card"><div class="intro-card-num">04</div><div class="intro-card-title">Emergency Ready</div><div class="intro-card-text">Storm damage. Structural concerns. We respond when it matters most.</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header fade-up">
+    <div><div class="section-label">What We Build</div><h2 class="section-title">OUR<br>SERVICES</h2></div>
+    <p class="section-desc">Every project handled start to finish by Brad and Dustin — no handoffs, no surprises.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card featured fade-up"><span class="service-icon">🪵</span><div class="service-num">01</div><div class="service-name">DECKS</div><p class="service-text">Custom deck design and build for residential properties across the Kanawha Valley. From ground-level patios to multi-level structures — built to last through WV winters.</p><div class="service-tag">Most Requested</div></div>
+    <div class="service-card fade-up"><span class="service-icon">🏠</span><div class="service-num">02</div><div class="service-name">SIDING</div><p class="service-text">Full siding installation and replacement. Vinyl, fiber cement, wood — we work with what fits your property and budget, installed right the first time.</p><div class="service-tag">High Demand</div></div>
+    <div class="service-card fade-up"><span class="service-icon">🪟</span><div class="service-num">03</div><div class="service-name">WINDOWS</div><p class="service-text">Window installation, replacement, and capping. Energy-efficient options that hold up against Appalachian weather. Tight seals, clean installs.</p><div class="service-tag">Year Round</div></div>
+    <div class="service-card fade-up"><span class="service-icon">🔨</span><div class="service-num">04</div><div class="service-name">INTERIOR RENO</div><p class="service-text">Kitchen updates, bathroom work, framing, drywall, trim — interior renovation projects of all scopes handled with the same attention we bring to exterior work.</p><div class="service-tag">Full Scope</div></div>
+    <div class="service-card fade-up"><span class="service-icon">⚡</span><div class="service-num">05</div><div class="service-name">EMERGENCY</div><p class="service-text">Storm damage, sudden structural issues, weather events — we respond fast. Property managers, HOAs, and homeowners call us when something can't wait.</p><div class="service-tag">24/7 Response</div></div>
+    <div class="service-card fade-up"><span class="service-icon">🏗️</span><div class="service-num">06</div><div class="service-name">COMMERCIAL</div><p class="service-text">HOAs, landlord associations, and banks managing foreclosure properties. Large scope, multi-unit, and investment property renovation — we've done it before.</p><div class="service-tag">Property Managers</div></div>
+  </div>
+  <div class="service-cta fade-up">
+    <p>Not sure which service fits your project? We'll walk the property and tell you exactly what it needs.</p>
+    <span class="mag-btn"><a href="#" class="btn-primary" data-modal>Get a Free Estimate</a></span>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-header fade-up"><div class="section-label">How It Works</div><h2 class="section-title">FROM CALL<br>TO COMPLETE</h2></div>
+  <div class="process-steps">
+    <div class="process-step fade-up"><div class="step-dot">01</div><div class="step-title">FREE ESTIMATE</div><p class="step-text">Call or fill out the form. Brad or Dustin will walk the property, assess the scope, and give you a straight number — no hidden fees, no upsells.</p></div>
+    <div class="process-step fade-up"><div class="step-dot">02</div><div class="step-title">CLEAR PLAN</div><p class="step-text">We explain exactly what's happening, when it starts, and how long it takes. You'll know the full scope before a single nail goes in.</p></div>
+    <div class="process-step fade-up"><div class="step-dot">03</div><div class="step-title">WE BUILD IT</div><p class="step-text">Brad and Dustin do the work. Direct access throughout the project — the guys who gave you the estimate are the guys on the job.</p></div>
+    <div class="process-step fade-up"><div class="step-dot">04</div><div class="step-title">YOU APPROVE</div><p class="step-text">We don't consider a job done until you say it's done. Final walkthrough before we close out — your satisfaction is the standard.</p></div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+  <div class="trust-inner">
+    <div class="fade-up">
+      <h2 class="trust-heading">WHY PROPERTY MANAGERS CALL US FIRST</h2>
+      <p class="trust-body">HOAs, landlord associations, and banks managing foreclosure properties need one thing above all else: a crew that shows up, communicates, and doesn't disappear after the estimate.</p>
+      <span class="mag-btn" style="display:inline-block;margin-top:16px;"><a href="#" class="btn-amber-outline" data-modal>Schedule a Walkthrough</a></span>
+    </div>
+    <div class="trust-list fade-up">
+      <div class="trust-item"><div class="trust-icon">📋</div><div class="trust-item-text"><strong>Licensed & Insured in West Virginia</strong><span>License WV065578 — fully covered, no liability on your end.</span></div></div>
+      <div class="trust-item"><div class="trust-icon">📞</div><div class="trust-item-text"><strong>Direct Line to Brad or Dustin</strong><span>No answering service. No callbacks from an assistant. Real answers.</span></div></div>
+      <div class="trust-item"><div class="trust-icon">🏗️</div><div class="trust-item-text"><strong>Subcontract-Grade Quality</strong><span>We've worked under Tri-State Exterior, St. Albans Windows, and Secure Construction. We know large-scale standards.</span></div></div>
+      <div class="trust-item"><div class="trust-icon">⚡</div><div class="trust-item-text"><strong>Emergency Response Capability</strong><span>Storm damage and urgent repairs handled fast. We know what's at stake when something breaks.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AREA -->
+<section id="area">
+  <div class="area-inner">
+    <div class="fade-up">
+      <div class="section-label">Where We Work</div>
+      <h2 class="section-title" style="margin-bottom:56px;">SERVICE<br>AREA</h2>
+      <div class="county-block"><div class="county-name">Kanawha County</div><div class="county-cities"><span class="city-tag">Charleston</span><span class="city-tag">Dunbar</span><span class="city-tag">St. Albans</span></div></div>
+      <div class="county-block"><div class="county-name">Putnam County</div><div class="county-cities"><span class="city-tag">Scott Depot</span><span class="city-tag">Teays Valley</span><span class="city-tag">Hurricane</span></div></div>
+      <div class="county-block"><div class="county-name">Cabell County</div><div class="county-cities"><span class="city-tag">Huntington</span><span class="city-tag">Barboursville</span></div></div>
+    </div>
+    <div class="area-right fade-up">
+      <p class="area-note">We'll inspect any property in our service area before declining work. <strong>We don't turn down jobs from a distance</strong> — if it's in the valley, we'll come take a look.</p>
+      <p class="area-note">Outside our listed area? <strong>Call us anyway.</strong> Scope and distance determine whether we can make it work.</p>
+      <div class="emergency-box"><h4>⚡ EMERGENCY CALLS</h4><p>Storm events, sudden structural issues, and urgent repair needs are handled on a case-by-case basis. Don't wait — call 304-483-3655 and Brad or Dustin will pick up.</p></div>
+      <span class="mag-btn"><a href="#" class="btn-primary" data-modal>Request a Free Estimate</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-header fade-up">
+      <div><div class="section-label">What Clients Say</div><h2 class="section-title">THE REVIEWS<br>SPEAK.</h2></div>
+      <p class="section-desc">See what Charleston and Kanawha Valley homeowners and property managers have to say.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up"><span class="quote-mark">"</span><div class="stars">★★★★★</div><p class="testimonial-text">Brad and Dustin built us a two-level deck this spring. They were on time every day, called with updates, and the craftsmanship is excellent. You can tell they actually care about the work.</p><div class="testimonial-author"><strong>Mike T.</strong>Charleston, WV · Deck Build</div></div>
+      <div class="testimonial-card fade-up"><span class="quote-mark">"</span><div class="stars">★★★★★</div><p class="testimonial-text">I manage several rental properties in Kanawha County and MSHI is the only contractor I call for exterior work. They show up, communicate, and get it done right. That's rare around here.</p><div class="testimonial-author"><strong>Sandra K.</strong>St. Albans, WV · Property Manager</div></div>
+      <div class="testimonial-card fade-up"><span class="quote-mark">"</span><div class="stars">★★★★★</div><p class="testimonial-text">Had storm damage to my siding and called on a Sunday. Dustin picked up, came out Monday morning, and had a full repair plan by noon. Couldn't ask for better service.</p><div class="testimonial-author"><strong>James R.</strong>Teays Valley, WV · Emergency Repair</div></div>
+    </div>
+    <div class="testimonials-cta fade-up" style="margin-top:60px;">
+      <span class="mag-btn"><a href="#" class="btn-primary" data-modal>Get Your Free Estimate Today</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">MOUNTAIN STATE <span>HOME INNOVATIONS</span></div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#area">Service Area</a>
+      <a href="#testimonials">Reviews</a>
+      <span class="mag-btn"><a href="#" class="btn-primary" style="font-size:12px;padding:10px 20px;" data-modal>Free Estimate</a></span>
+    </div>
+    <div class="footer-copy">© 2026 Mountain State Home Innovations · Licensed & Insured · WV065578 · Charleston, West Virginia · Serving Kanawha, Putnam & Cabell Counties</div>
+  </div>
+</footer>
+
+<script>
+// SMOOTH SCROLL
+function smoothScrollTo(targetY, duration) {
+  const startY = window.scrollY;
+  const diff = targetY - startY;
+  let startTime = null;
+  function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    window.scrollTo(0, startY + diff * ease(progress));
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const hash = link.getAttribute('href');
+    if (hash === '#' || link.hasAttribute('data-modal')) return;
+    const target = document.querySelector(hash);
+    if (target) {
+      e.preventDefault();
+      const offset = target.getBoundingClientRect().top + window.scrollY - 80;
+      smoothScrollTo(offset, 1100);
+    }
+  });
+});
+
+// MODAL
+const modalOverlay = document.getElementById('estimateModal');
+const closeBtn = document.getElementById('modalClose');
+
+function openModal() {
+  modalOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  modalOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('[data-modal]').forEach(el => {
+  el.addEventListener('click', e => { e.preventDefault(); openModal(); });
+});
+closeBtn.addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+document.getElementById('formSubmit').addEventListener('click', function() {
+  this.textContent = "Sent! We'll be in touch ✓";
+  this.style.background = '#2a5a2a';
+  this.style.color = '#fff';
+});
+
+// NAV
+const navEl = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  navEl.style.background = window.scrollY > 80 ? 'rgba(26,26,24,0.97)' : 'linear-gradient(to bottom, rgba(26,26,24,0.97), transparent)';
+}, { passive: true });
+
+// FADE IN
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// MAGNETIC BUTTONS
+document.querySelectorAll('.mag-btn').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const rect = btn.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) * 0.38;
+    const dy = (e.clientY - cy) * 0.38;
+    btn.style.transform = `translate(${dx}px, ${dy}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+    btn.style.transition = 'transform 0.5s cubic-bezier(.17,.67,.35,1.2)';
+    setTimeout(() => { btn.style.transition = 'transform 0.15s cubic-bezier(.17,.67,.35,1.2)'; }, 500);
+  });
+  btn.addEventListener('mouseenter', () => {
+    btn.style.transition = 'transform 0.15s cubic-bezier(.17,.67,.35,1.2)';
+  });
+});
+</script>
+</body>
+</html>
