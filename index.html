@@ -114,6 +114,45 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .service-cta { margin-top: 60px; max-width: 1400px; margin-left: auto; margin-right: auto; padding-top: 60px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.06); }
 .service-cta p { font-family: var(--serif); font-size: 20px; color: var(--stone); font-weight: 300; }
 
+/* ============ WORK / BEFORE-AFTER GALLERY ============ */
+#work { padding: 120px 48px; max-width: 1400px; margin: 0 auto; }
+.work-intro { max-width: 560px; margin-bottom: 64px; }
+.work-intro p { font-family: var(--serif); font-size: 18px; color: var(--stone); font-weight: 300; line-height: 1.6; margin-top: 20px; }
+.ba-project { margin-bottom: 64px; }
+.ba {
+  --pos: 50%;
+  position: relative; aspect-ratio: 3/2; width: 100%;
+  border: 1px solid rgba(255,255,255,0.08); background: var(--slate);
+  overflow: hidden; touch-action: pan-y; user-select: none;
+}
+.ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; -webkit-user-drag: none; pointer-events: none; display: block; }
+.ba-after { z-index: 1; }
+.ba-before { z-index: 2; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.ba-divider { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; background: var(--amber); transform: translateX(-1px); z-index: 3; pointer-events: none; }
+.ba-grip { position: absolute; top: 50%; left: var(--pos); width: 46px; height: 46px; transform: translate(-50%,-50%); border-radius: 50%; background: var(--amber); color: var(--charcoal); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(0,0,0,0.5); z-index: 4; pointer-events: none; font-family: var(--display); font-size: 20px; letter-spacing: -2px; }
+.ba-grip::before { content: '\2039\203A'; }
+.ba-tag { position: absolute; top: 14px; z-index: 3; pointer-events: none; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; color: var(--white); background: rgba(26,26,24,0.72); padding: 6px 11px; backdrop-filter: blur(3px); }
+.ba-tag-before { left: 14px; }
+.ba-tag-after { right: 14px; color: var(--amber-light); }
+.ba-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; -webkit-appearance: none; appearance: none; background: transparent; cursor: ew-resize; z-index: 5; }
+.ba-range:focus-visible { outline: 2px solid var(--amber-light); outline-offset: 3px; }
+.ba-range::-webkit-slider-thumb { -webkit-appearance: none; width: 48px; height: 400px; cursor: ew-resize; }
+.ba-range::-moz-range-thumb { width: 48px; height: 400px; border: 0; background: transparent; cursor: ew-resize; }
+.ba-caption { margin: 20px 2px 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
+.ba-caption h3 { font-family: var(--display); font-size: clamp(24px, 2.4vw, 32px); letter-spacing: 0.03em; }
+.ba-caption p { font-family: var(--serif); font-size: 16px; line-height: 1.5; color: var(--stone); font-weight: 300; flex: 1 1 280px; }
+.work-feat { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 12px; }
+.feat-card { background: var(--slate); overflow: hidden; }
+.feat-img { position: relative; aspect-ratio: 3/2; overflow: hidden; }
+.feat-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+.feat-card:hover .feat-img img { transform: scale(1.04); }
+.feat-chip { position: absolute; top: 14px; left: 14px; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; color: var(--charcoal); background: var(--amber); padding: 5px 10px; }
+.feat-body { padding: 28px 32px 32px; }
+.feat-body h4 { font-family: var(--display); font-size: 26px; letter-spacing: 0.03em; margin-bottom: 8px; }
+.feat-body p { font-family: var(--serif); font-size: 15px; line-height: 1.5; color: var(--stone); font-weight: 300; }
+.work-cta { margin-top: 60px; padding-top: 60px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; }
+.work-cta p { font-family: var(--serif); font-size: 20px; color: var(--stone); font-weight: 300; max-width: 24ch; }
+
 /* PROCESS */
 #process { padding: 120px 48px; max-width: 1400px; margin: 0 auto; }
 .process-header { margin-bottom: 80px; }
@@ -246,7 +285,7 @@ footer { background: #111110; padding: 60px 48px; border-top: 1px solid rgba(255
   .process-steps { grid-template-columns: 1fr 1fr; gap: 48px; }
   .process-steps::before { display: none; }
   .testimonials-grid { grid-template-columns: 1fr; }
-  #intro, #services, #process, #trust, #area, #testimonials { padding: 80px 24px; }
+  #intro, #services, #work, #process, #trust, #area, #testimonials { padding: 80px 24px; }
   footer { padding: 40px 24px; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
   .modal-header { padding: 32px 28px 24px; }
@@ -254,6 +293,7 @@ footer { background: #111110; padding: 60px 48px; border-top: 1px solid rgba(255
   .modal-contact-row { grid-template-columns: 1fr; gap: 16px; }
   .modal-title { font-size: 40px; }
   .service-cta { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .work-cta { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 640px) {
   .hero-stats { flex-direction: column; gap: 24px; }
@@ -263,6 +303,7 @@ footer { background: #111110; padding: 60px 48px; border-top: 1px solid rgba(255
   .intro-right { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; }
   .btn-primary, .btn-outline { text-align: center; }
+  .work-feat { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -332,6 +373,7 @@ footer { background: #111110; padding: 60px 48px; border-top: 1px solid rgba(255
   <a href="#" class="nav-logo">MOUNTAIN STATE <span>HOME INNOVATIONS</span></a>
   <div class="nav-links">
     <a href="#services">Services</a>
+    <a href="#work">Our Work</a>
     <a href="#area">Service Area</a>
     <a href="#testimonials">Reviews</a>
     <span class="mag-btn"><a href="#" class="nav-cta" data-modal>Free Estimate</a></span>
@@ -407,6 +449,97 @@ footer { background: #111110; padding: 60px 48px; border-top: 1px solid rgba(255
   </div>
 </section>
 
+<!-- WORK / BEFORE-AFTER GALLERY -->
+<section id="work">
+  <div class="section-header fade-up">
+    <div><div class="section-label">Our Work</div><h2 class="section-title">BEFORE<br>& AFTER</h2></div>
+    <p class="section-desc">Real projects across the Kanawha Valley. Drag the slider to see exactly what we changed.</p>
+  </div>
+
+  <div class="ba-project fade-up">
+    <div class="ba">
+      <img class="ba-after" src="assets/bathroom-after.jpg" alt="Finished remodeled bathroom">
+      <img class="ba-before" src="assets/bathroom-before.jpg" alt="Dated bathroom before remodel">
+      <span class="ba-tag ba-tag-before">Before</span>
+      <span class="ba-tag ba-tag-after">After</span>
+      <span class="ba-divider"></span>
+      <span class="ba-grip"></span>
+      <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Bathroom before and after comparison slider">
+    </div>
+    <div class="ba-caption">
+      <h3>Full Bathroom Gut & Remodel</h3>
+      <p>Dated wallpaper and worn-out fixtures out. New vanity, tub surround, flooring, and lighting in.</p>
+    </div>
+  </div>
+
+  <div class="ba-project fade-up">
+    <div class="ba">
+      <img class="ba-after" src="assets/reside-after.jpg" alt="Home with new vinyl siding">
+      <img class="ba-before" src="assets/reside-before.jpg" alt="Home with old siding stripped to sheathing">
+      <span class="ba-tag ba-tag-before">Before</span>
+      <span class="ba-tag ba-tag-after">After</span>
+      <span class="ba-divider"></span>
+      <span class="ba-grip"></span>
+      <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Siding before and after comparison slider">
+    </div>
+    <div class="ba-caption">
+      <h3>Whole-Home Re-Side</h3>
+      <p>Old siding stripped to the sheathing and wrapped in fresh, energy-smart vinyl.</p>
+    </div>
+  </div>
+
+  <div class="ba-project fade-up">
+    <div class="ba">
+      <img class="ba-after" src="assets/basement-after.jpg" alt="Finished basement with new slab and walls">
+      <img class="ba-before" src="assets/basement-before.jpg" alt="Basement during excavation">
+      <span class="ba-tag ba-tag-before">Before</span>
+      <span class="ba-tag ba-tag-after">After</span>
+      <span class="ba-divider"></span>
+      <span class="ba-grip"></span>
+      <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Basement before and after comparison slider">
+    </div>
+    <div class="ba-caption">
+      <h3>Basement Dig-Out & Slab</h3>
+      <p>A wet dirt crawlspace turned into a dry, full-height space — poured slab, parged walls, walkout doors.</p>
+    </div>
+  </div>
+
+  <div class="work-feat fade-up">
+    <article class="feat-card">
+      <div class="feat-img">
+        <span class="feat-chip">Completed</span>
+        <img src="assets/feature-farmhouse.jpg" alt="Two-story board-and-batten farmhouse with metal roof">
+      </div>
+      <div class="feat-body">
+        <h4>Board-&-Batten Farmhouse</h4>
+        <p>New exterior siding, trim, and standing-seam metal roof.</p>
+      </div>
+    </article>
+    <article class="feat-card">
+      <div class="feat-img">
+        <span class="feat-chip">Completed</span>
+        <img src="assets/feature-doors.jpg" alt="New French walkout doors set into brick foundation">
+      </div>
+      <div class="feat-body">
+        <h4>Basement Walkout Doors</h4>
+        <p>New French doors cut into the foundation for light and egress.</p>
+      </div>
+    </article>
+  </div>
+
+  <!--
+    PENDING JOBS — add when Brad & Dustin send the missing shots:
+      • Brown ranch re-side — has BEFORE + during. Needs the finished AFTER.
+      • Composite deck build — has a during shot. Needs a clean BEFORE + finished AFTER.
+    To add a slider: copy a .ba-project block above, swap the two image filenames, drop photos in /assets.
+  -->
+
+  <div class="work-cta fade-up">
+    <p>Want results like these on your place?</p>
+    <span class="mag-btn"><a href="#" class="btn-primary" data-modal>Get a Free Estimate</a></span>
+  </div>
+</section>
+
 <!-- PROCESS -->
 <section id="process">
   <div class="process-header fade-up"><div class="section-label">How It Works</div><h2 class="section-title">FROM CALL<br>TO COMPLETE</h2></div>
@@ -478,6 +611,7 @@ footer { background: #111110; padding: 60px 48px; border-top: 1px solid rgba(255
     <div class="footer-logo">MOUNTAIN STATE <span>HOME INNOVATIONS</span></div>
     <div class="footer-links">
       <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
       <a href="#area">Service Area</a>
       <a href="#testimonials">Reviews</a>
       <span class="mag-btn"><a href="#" class="btn-primary" style="font-size:12px;padding:10px 20px;" data-modal>Free Estimate</a></span>
@@ -557,6 +691,14 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// BEFORE / AFTER SLIDERS
+document.querySelectorAll('.ba').forEach(function(ba) {
+  const range = ba.querySelector('.ba-range');
+  const set = v => ba.style.setProperty('--pos', v + '%');
+  set(range.value);
+  range.addEventListener('input', () => set(range.value));
+});
 
 // MAGNETIC BUTTONS
 document.querySelectorAll('.mag-btn').forEach(btn => {
