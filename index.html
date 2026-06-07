@@ -193,8 +193,15 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 /* TESTIMONIALS */
 #testimonials { padding: 120px 48px; }
 .testimonials-inner { max-width: 1400px; margin: 0 auto; }
-.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 72px; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; margin-top: 72px; }
 .testimonial-card { background: var(--slate); padding: 48px 40px; }
+.testimonial-card:nth-child(1) { grid-column: 1 / 3; }
+.testimonial-card:nth-child(2) { grid-column: 3 / 5; }
+.testimonial-card:nth-child(3) { grid-column: 5 / 7; }
+.testimonial-card:nth-child(4) { grid-column: 2 / 4; }
+.testimonial-card:nth-child(5) { grid-column: 4 / 6; }
+.testimonial-source { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.testimonial-source::before { content: ""; width: 14px; height: 14px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="%23c8860a" d="M44.5 20H24v8.5h11.8C34.7 33.9 30 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"/></svg>') no-repeat center / contain; }
 .quote-mark { font-family: var(--serif); font-size: 80px; color: var(--amber); line-height: 0.6; margin-bottom: 24px; display: block; opacity: 0.4; }
 .testimonial-text { font-family: var(--serif); font-size: 18px; font-weight: 300; color: var(--cream); line-height: 1.7; margin-bottom: 32px; font-style: italic; }
 .testimonial-author { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
@@ -285,6 +292,7 @@ footer { background: #111110; padding: 60px 48px; border-top: 1px solid rgba(255
   .process-steps { grid-template-columns: 1fr 1fr; gap: 48px; }
   .process-steps::before { display: none; }
   .testimonials-grid { grid-template-columns: 1fr; }
+  .testimonial-card:nth-child(n) { grid-column: 1 / -1; }
   #intro, #services, #work, #process, #trust, #area, #testimonials { padding: 80px 24px; }
   footer { padding: 40px 24px; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
@@ -595,11 +603,14 @@ footer { background: #111110; padding: 60px 48px; border-top: 1px solid rgba(255
       <p class="section-desc">See what Charleston and Kanawha Valley homeowners and property managers have to say.</p>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card fade-up"><span class="quote-mark">"</span><div class="stars">★★★★★</div><p class="testimonial-text">Brad and Dustin built us a two-level deck this spring. They were on time every day, called with updates, and the craftsmanship is excellent. You can tell they actually care about the work.</p><div class="testimonial-author"><strong>Mike T.</strong>Charleston, WV · Deck Build</div></div>
-      <div class="testimonial-card fade-up"><span class="quote-mark">"</span><div class="stars">★★★★★</div><p class="testimonial-text">I manage several rental properties in Kanawha County and MSHI is the only contractor I call for exterior work. They show up, communicate, and get it done right. That's rare around here.</p><div class="testimonial-author"><strong>Sandra K.</strong>St. Albans, WV · Property Manager</div></div>
-      <div class="testimonial-card fade-up"><span class="quote-mark">"</span><div class="stars">★★★★★</div><p class="testimonial-text">Had storm damage to my siding and called on a Sunday. Dustin picked up, came out Monday morning, and had a full repair plan by noon. Couldn't ask for better service.</p><div class="testimonial-author"><strong>James R.</strong>Teays Valley, WV · Emergency Repair</div></div>
+      <div class="testimonial-card fade-up"><span class="quote-mark">"</span><div class="testimonial-source">Google Review</div><div class="stars">★★★★★</div><p class="testimonial-text">Brad and Dustin were great. Not only great enjoyable guys, but they handled every question I had. We ran into some hidden rot and they identified it and replaced wood. We had a unique gutter flashing and they talked through solutions to make it right. I would recommend them to anyone.</p><div class="testimonial-author"><strong>Ken Fuller</strong>Siding · Hidden Rot Repair</div></div>
+      <div class="testimonial-card fade-up"><span class="quote-mark">"</span><div class="testimonial-source">Google Review</div><div class="stars">★★★★★</div><p class="testimonial-text">I hired Brad and Dustin to remodel my bathroom. I highly recommend them. They were professional, very considerate and they worked very well together. The price was inline with what I expected and they did exactly what I wanted.</p><div class="testimonial-author"><strong>Tracy Wayne</strong>Bathroom Remodel</div></div>
+      <div class="testimonial-card fade-up"><span class="quote-mark">"</span><div class="testimonial-source">Google Review</div><div class="stars">★★★★★</div><p class="testimonial-text">They did a great job building my deck. The price was reasonable and they were very professional. They even accommodated a last minute change I requested.</p><div class="testimonial-author"><strong>Tim Smith</strong>Deck Build</div></div>
+      <div class="testimonial-card fade-up"><span class="quote-mark">"</span><div class="testimonial-source">Google Review</div><div class="stars">★★★★★</div><p class="testimonial-text">Brad and his crew did a wonderful job installing our siding. They were prompt each day and cleaned up after each day. They also made sure to ask if we had any questions or concerns and made sure to address those concerns. Very pleased with the outcome, quality of work and their desire to make the customer happy! Thanks again guys!</p><div class="testimonial-author"><strong>Francis Fasching</strong>Siding Installation</div></div>
+      <div class="testimonial-card fade-up"><span class="quote-mark">"</span><div class="testimonial-source">Google Review</div><div class="stars">★★★★★</div><p class="testimonial-text">We hired Mountain State Home Innovations to work on windowsill repair/re-caulking after seeing what a good job they did installing our neighbor's new siding. Owners Brad and Dustin are very conscientious about the job that they do. Most importantly, they kept me "in the loop" via text messaging or a phone call when materials were delayed. Communication is key when running a business and they do a very good job at keeping the client informed.</p><div class="testimonial-author"><strong>Susan Adkins</strong>Window Repair · Referred by Neighbor</div></div>
     </div>
-    <div class="testimonials-cta fade-up" style="margin-top:60px;">
+    <div class="testimonials-cta fade-up" style="margin-top:60px; display:flex; flex-direction:column; align-items:center; gap:32px;">
+      <a href="https://share.google/KeVYcU4QxVwfur0cN" target="_blank" rel="noopener" style="font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--amber); text-decoration:none; border-bottom:1px solid var(--amber); padding-bottom:4px;">Read All Reviews on Google →</a>
       <span class="mag-btn"><a href="#" class="btn-primary" data-modal>Get Your Free Estimate Today</a></span>
     </div>
   </div>
